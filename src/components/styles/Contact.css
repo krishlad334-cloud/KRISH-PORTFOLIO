@@ -394,3 +394,17 @@
     justify-content: center;
   }
 }
+
+@media only screen and (max-width: 400px) {
+  .contact-item {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  .contact-item-value {
+    font-size: 12px;
+  }
+  .contact-resume-btn {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}

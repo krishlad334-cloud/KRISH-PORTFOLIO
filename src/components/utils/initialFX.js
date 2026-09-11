@@ -3,6 +3,13 @@ import { smoother } from "../Navbar";
 
 let hasInitialized = false;
 
+// Safety timeout to guarantee body is scrollable even on slow mobile networks
+if (typeof window !== "undefined") {
+  setTimeout(() => {
+    document.body.style.overflowY = "auto";
+  }, 4000);
+}
+
 export function initialFX() {
   if (hasInitialized) return;
   hasInitialized = true;
@@ -11,6 +18,7 @@ export function initialFX() {
   if (smoother && typeof smoother.paused === "function") {
     smoother.paused(false);
   }
+
 
   const mainEl = document.getElementsByTagName("main")[0];
   if (mainEl) {

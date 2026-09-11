@@ -39,6 +39,12 @@
   box-shadow: 0 0 20px rgba(94, 234, 212, 0.35);
 }
 
+.cursor-ring.cursor-disabled {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  pointer-events: none;
+}
+
 .cursor-dot.dot-hidden {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0);

@@ -1,4 +1,5 @@
 import {
+  FaGithub,
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa6";
@@ -7,6 +8,11 @@ import { MdArrowOutward } from "react-icons/md";
 import "./styles/SocialIcons.css";
 
 const SOCIAL_LINKS = [
+  {
+    name: "GitHub",
+    url: "https://github.com/krishlad334-cloud",
+    icon: FaGithub,
+  },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/krish-lad/",
@@ -18,6 +24,8 @@ const SOCIAL_LINKS = [
     icon: FaInstagram,
   },
 ];
+
+
 
 const SocialIcons = () => {
   return (

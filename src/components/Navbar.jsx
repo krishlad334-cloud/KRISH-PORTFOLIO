@@ -54,7 +54,7 @@ const Navbar = () => {
           setIsScrolled(self.scroll() > 15);
         },
       });
-    } catch (e) {
+    } catch {
       // fallback to scroll listener
     }
 
@@ -80,6 +80,7 @@ const Navbar = () => {
           effects: true,
           autoResize: true,
           ignoreMobileResize: true,
+          smoothTouch: 0,
         });
 
         smoother.scrollTop(0);
@@ -110,7 +111,13 @@ const Navbar = () => {
         if (smoother && window.innerWidth > 1024) {
           smoother.scrollTo(item.sectionId, true, "top top");
         } else {
-          targetElement.scrollIntoView({ behavior: "smooth" });
+          const headerHeight = 70;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+          window.scrollTo({
+            top: Math.max(0, offsetPosition),
+            behavior: "smooth",
+          });
         }
         return;
       }
@@ -159,3 +166,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

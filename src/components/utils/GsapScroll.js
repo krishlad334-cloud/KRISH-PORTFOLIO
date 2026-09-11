@@ -144,7 +144,54 @@ export function setCharTimeline(character, camera) {
         .to(character.rotation, { x: -0.04, duration: 2, delay: 1 }, 0);
     }
   } else {
-    if (character) {
+    if (character && camera) {
+      // Mobile and Tablet: Smoothly fade and move character out during hero scroll
+      const mobTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".landing-section",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.5,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      mobTl
+        .to(
+          ".character-model",
+          {
+            opacity: 0,
+            y: "-40%",
+            scale: 0.85,
+            duration: 1,
+            ease: "power2.out",
+          },
+          0
+        )
+        .to(
+          ".landing-container",
+          {
+            opacity: 0,
+            duration: 0.4,
+          },
+          0
+        );
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: ".about-section",
+          start: "top 80%",
+          end: "bottom top",
+          onEnter: () => {
+            gsap.set(".character-model", { pointerEvents: "none", visibility: "hidden" });
+          },
+          onLeaveBack: () => {
+            gsap.set(".character-model", { pointerEvents: "inherit", visibility: "visible" });
+          },
+        },
+      });
+
+
       const tM2 = gsap.timeline({
         scrollTrigger: {
           trigger: ".what-box-cards",
@@ -161,12 +208,14 @@ export function setAllTimeline() {
   const careerTrigger = document.querySelector(".career-section");
   if (!careerTrigger) return;
 
+  const isMobile = window.innerWidth <= 768;
+
   const careerTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".career-section",
-      start: "top 65%",
+      start: isMobile ? "top 85%" : "top 65%",
       end: "bottom 75%",
-      scrub: 1,
+      scrub: isMobile ? false : 1,
       invalidateOnRefresh: true,
     },
   });
@@ -191,4 +240,5 @@ export function setAllTimeline() {
       0
     );
 }
+
 

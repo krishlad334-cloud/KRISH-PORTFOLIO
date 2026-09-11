@@ -6,12 +6,14 @@
   opacity: 1;
   min-height: 100vh;
   min-height: 100svh;
-  width: var(--cWidth);
-  max-width: var(--cMaxWidth);
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 1280px;
   margin: auto;
-  padding: 60px 0;
+  padding: 60px clamp(16px, 4vw, 40px);
   box-sizing: border-box;
 }
+
 
 .about-me {
   padding: 20px 0;
@@ -147,12 +149,24 @@
   .about-section {
     justify-content: flex-end;
     min-height: var(--vh);
-    padding: 40px 0;
+    padding: 40px clamp(16px, 4vw, 40px);
   }
   .about-me {
     width: 52%;
     max-width: 720px;
     padding-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .about-section {
+    min-height: auto;
+    padding: 60px clamp(16px, 4vw, 40px);
+    justify-content: center;
+  }
+  .about-me {
+    max-width: 780px;
+    width: 100%;
   }
 }
 
@@ -162,11 +176,12 @@
     gap: 12px;
   }
   .about-section {
-    padding: 50px 0;
+    padding: 50px clamp(16px, 4vw, 40px);
     min-height: auto;
   }
   .about-me {
     max-width: 100%;
   }
 }
+
 

@@ -7,8 +7,10 @@ import {
   MdContentCopy,
   MdCheck,
 } from "react-icons/md";
-import { FaLinkedinIn, FaInstagram, FaFilePdf } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn, FaInstagram, FaFilePdf } from "react-icons/fa6";
+
 import "./styles/Contact.css";
+
 
 const Contact = () => {
   const [copiedItem, setCopiedItem] = useState(null);
@@ -114,6 +116,20 @@ const Contact = () => {
             <h4>Profiles &amp; Networks</h4>
             <div className="contact-social-grid">
               <a
+                href="https://github.com/krishlad334-cloud"
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="disable"
+                className="contact-social-link"
+              >
+                <div className="social-link-left">
+                  <FaGithub className="social-icon" />
+                  <span>GitHub</span>
+                </div>
+                <MdArrowOutward />
+              </a>
+
+              <a
                 href="https://www.linkedin.com/in/krish-lad/"
                 target="_blank"
                 rel="noreferrer"
@@ -142,6 +158,7 @@ const Contact = () => {
               </a>
             </div>
           </div>
+
 
           {/* Education & Overview Card */}
           <div className="contact-card">

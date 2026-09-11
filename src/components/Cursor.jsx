@@ -50,7 +50,17 @@ const Cursor = () => {
     frameId = requestAnimationFrame(renderLoop);
 
     const onMouseOver = (e) => {
-      const target = e.target.closest("a, button, [data-cursor], .skill-card, .what-content, .career-info-box");
+      const disableTarget = e.target.closest('[data-cursor="disable"]');
+      if (disableTarget) {
+        isHovering = false;
+        ring.classList.remove("cursor-hover");
+        ring.classList.add("cursor-disabled");
+        dot.classList.add("dot-hidden");
+        return;
+      }
+      ring.classList.remove("cursor-disabled");
+
+      const target = e.target.closest("a, button, .skill-card, .what-content, .career-info-box");
       if (target) {
         isHovering = true;
         ring.classList.add("cursor-hover");
@@ -59,7 +69,13 @@ const Cursor = () => {
     };
 
     const onMouseOut = (e) => {
-      const target = e.target.closest("a, button, [data-cursor], .skill-card, .what-content, .career-info-box");
+      const disableTarget = e.target.closest('[data-cursor="disable"]');
+      if (disableTarget) {
+        ring.classList.remove("cursor-disabled");
+        dot.classList.remove("dot-hidden");
+      }
+
+      const target = e.target.closest("a, button, .skill-card, .what-content, .career-info-box");
       if (target) {
         isHovering = false;
         ring.classList.remove("cursor-hover");
@@ -67,14 +83,28 @@ const Cursor = () => {
       }
     };
 
+    const onMouseLeaveWindow = () => {
+      ring.classList.add("cursor-disabled");
+      dot.classList.add("dot-hidden");
+    };
+
+    const onMouseEnterWindow = () => {
+      ring.classList.remove("cursor-disabled");
+      dot.classList.remove("dot-hidden");
+    };
+
     document.addEventListener("mouseover", onMouseOver);
     document.addEventListener("mouseout", onMouseOut);
+    document.addEventListener("mouseleave", onMouseLeaveWindow);
+    document.addEventListener("mouseenter", onMouseEnterWindow);
 
     return () => {
       cancelAnimationFrame(frameId);
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseover", onMouseOver);
       document.removeEventListener("mouseout", onMouseOut);
+      document.removeEventListener("mouseleave", onMouseLeaveWindow);
+      document.removeEventListener("mouseenter", onMouseEnterWindow);
     };
   }, []);
 
