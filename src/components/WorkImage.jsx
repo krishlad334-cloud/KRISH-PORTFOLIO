@@ -47,7 +47,7 @@ const WorkImage = ({ image, alt, video, link }) => {
         </div>
 
         <div className="work-img-container">
-          <img src={image} alt={alt || "Project preview"} />
+          <img src={image} alt={alt || "Project preview"} loading="lazy" decoding="async" />
           {isVideo && videoUrl && (
             <video src={videoUrl} autoPlay muted playsInline loop></video>
           )}

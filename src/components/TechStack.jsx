@@ -162,29 +162,28 @@ function Pointer({ vec = new THREE.Vector3(), isActive }) {
 }
 
 const TechStack = () => {
-  const [isActive, setIsActive] = useState(false);
-  const [showCanvas, setShowCanvas] = useState(
-    typeof window !== "undefined" ? window.innerWidth > 1024 : false
+  const [isActive, setIsActive] = useState(true);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= 768 : false
   );
 
   useEffect(() => {
     const handleResize = () => {
-      setShowCanvas(window.innerWidth > 1024);
+      setIsMobile(window.innerWidth <= 768);
     };
 
     const handleScroll = () => {
-      const workEl = document.getElementById("work");
-      if (workEl) {
-        const scrollY = window.scrollY || document.documentElement.scrollTop;
-        const threshold = workEl.getBoundingClientRect().top + scrollY;
-        setIsActive(scrollY > threshold - 300);
+      const skillsEl = document.getElementById("skills");
+      if (skillsEl) {
+        const rect = skillsEl.getBoundingClientRect();
+        setIsActive(rect.top < window.innerHeight + 300 && rect.bottom > -300);
       } else {
         setIsActive(true);
       }
     };
 
     window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => {
@@ -247,45 +246,48 @@ const TechStack = () => {
         </div>
       </div>
 
-      {showCanvas && (
-        <Canvas
-          shadows
-          gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
-          camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
-          onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
-          className="tech-canvas"
-        >
-          <ambientLight intensity={1} />
-          <spotLight
-            position={[20, 20, 25]}
-            penumbra={1}
-            angle={0.2}
-            color="white"
-            castShadow
-            shadow-mapSize={[512, 512]}
-          />
-          <directionalLight position={[0, 5, -4]} intensity={2} />
-          <Physics gravity={[0, 0, 0]}>
-            <Pointer isActive={isActive} />
-            {spheres.map((props, i) => (
-              <SphereGeo
-                key={i}
-                {...props}
-                material={materials[i % materials.length]}
-                isActive={isActive}
-              />
-            ))}
-          </Physics>
-          <Environment
-            files="/models/char_enviorment.hdr"
-            environmentIntensity={0.5}
-            environmentRotation={[0, 4, 2]}
-          />
-          <EffectComposer enableNormalPass={false}>
-            <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
-          </EffectComposer>
-        </Canvas>
-      )}
+      <Canvas
+        shadows={!isMobile}
+        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
+        camera={{
+          position: [0, 0, isMobile ? 24 : 20],
+          fov: isMobile ? 38 : 32.5,
+          near: 1,
+          far: 100,
+        }}
+        onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
+        className="tech-canvas"
+      >
+        <ambientLight intensity={1} />
+        <spotLight
+          position={[20, 20, 25]}
+          penumbra={1}
+          angle={0.2}
+          color="white"
+          castShadow={!isMobile}
+          shadow-mapSize={[512, 512]}
+        />
+        <directionalLight position={[0, 5, -4]} intensity={2} />
+        <Physics gravity={[0, 0, 0]}>
+          <Pointer isActive={isActive} />
+          {(isMobile ? spheres.slice(0, 12) : spheres).map((props, i) => (
+            <SphereGeo
+              key={i}
+              {...props}
+              material={materials[i % materials.length]}
+              isActive={isActive}
+            />
+          ))}
+        </Physics>
+        <Environment
+          files="/models/char_enviorment.hdr"
+          environmentIntensity={0.5}
+          environmentRotation={[0, 4, 2]}
+        />
+        <EffectComposer enableNormalPass={false}>
+          <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
+        </EffectComposer>
+      </Canvas>
     </div>
 
   );

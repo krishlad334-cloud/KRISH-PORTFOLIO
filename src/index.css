@@ -259,16 +259,19 @@ body {
   width: 100% !important;
   height: 100% !important;
   z-index: 1;
-  pointer-events: auto;
+  pointer-events: none; /* Allows natural touch scroll on mobile without trapping gestures */
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tech-canvas {
+    pointer-events: auto;
+  }
 }
 
 @media screen and (max-width: 1024px) {
   .skills-cards-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
-  }
-  .tech-canvas {
-    display: none !important;
   }
 }
 
@@ -281,8 +284,5 @@ body {
     height: auto;
     min-height: auto;
     padding: 60px 0 40px 0;
-  }
-  .tech-canvas {
-    display: none !important;
   }
 }
