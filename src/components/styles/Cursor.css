@@ -1,0 +1,52 @@
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  background-color: #5eead4;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 0 10px #5eead4;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid rgba(94, 234, 212, 0.55);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.cursor-ring.cursor-hover {
+  width: 52px;
+  height: 52px;
+  background-color: rgba(94, 234, 212, 0.12);
+  border-color: #5eead4;
+  box-shadow: 0 0 20px rgba(94, 234, 212, 0.35);
+}
+
+.cursor-dot.dot-hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+@media (hover: none) or (max-width: 900px) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}

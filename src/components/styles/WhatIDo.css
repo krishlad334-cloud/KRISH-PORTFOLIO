@@ -1,0 +1,350 @@
+.whatIDO {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  opacity: 1;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: auto;
+  padding: 80px 0;
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+.what-box {
+  position: relative;
+  z-index: 6;
+}
+
+.what-box-title {
+  width: 42%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.what-title-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: rgba(94, 234, 212, 0.08);
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.what-title-badge span {
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--accentColor);
+  text-transform: uppercase;
+}
+
+.what-box-title h2.title {
+  font-size: clamp(38px, 4.8vw, 68px);
+  line-height: 1.05;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 20px 0;
+  letter-spacing: -1px;
+}
+
+.hat-h2 {
+  font-style: italic;
+  font-weight: 300;
+  color: #94a3b8;
+}
+
+.do-h2 {
+  color: var(--accentColor);
+  text-shadow: 0 0 25px rgba(94, 234, 212, 0.4);
+}
+
+.what-tagline {
+  font-size: clamp(15px, 1.2vw, 18px);
+  color: #94a3b8;
+  line-height: 1.6;
+  max-width: 440px;
+  margin: 0;
+}
+
+.what-box-cards {
+  width: 54%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.what-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 560px;
+}
+
+/* ── HUD Cyber Card ── */
+.what-card {
+  position: relative;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 24px 28px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.what-card:hover,
+.what-card-active {
+  border-color: rgba(94, 234, 212, 0.4);
+  box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px -5px var(--cardAccent);
+  transform: translateY(-2px);
+}
+
+.what-card-collapsed {
+  opacity: 0.85;
+}
+
+.what-card-collapsed:hover {
+  opacity: 1;
+}
+
+/* ── HUD Corner Accents ── */
+.hud-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--cardAccent, var(--accentColor));
+  opacity: 0.6;
+  transition: opacity 0.3s ease, border-color 0.3s ease;
+}
+
+.what-card:hover .hud-corner,
+.what-card-active .hud-corner {
+  opacity: 1;
+}
+
+.hud-tl {
+  top: 6px;
+  left: 6px;
+  border-top: 2px solid var(--cardAccent);
+  border-left: 2px solid var(--cardAccent);
+}
+
+.hud-tr {
+  top: 6px;
+  right: 6px;
+  border-top: 2px solid var(--cardAccent);
+  border-right: 2px solid var(--cardAccent);
+}
+
+.hud-bl {
+  bottom: 6px;
+  left: 6px;
+  border-bottom: 2px solid var(--cardAccent);
+  border-left: 2px solid var(--cardAccent);
+}
+
+.hud-br {
+  bottom: 6px;
+  right: 6px;
+  border-bottom: 2px solid var(--cardAccent);
+  border-right: 2px solid var(--cardAccent);
+}
+
+/* ── Card Header ── */
+.what-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.what-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.what-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--cardAccent, var(--accentColor));
+  opacity: 0.8;
+  letter-spacing: 1px;
+}
+
+.what-icon {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.what-header-text {
+  flex: 1;
+}
+
+.what-header-text h3 {
+  margin: 0;
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #f8fafc;
+}
+
+.what-header-text h4 {
+  margin: 4px 0 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: #94a3b8;
+}
+
+.what-expand-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+  font-size: 14px;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.what-expand-indicator.expanded {
+  transform: rotate(90deg);
+  background: var(--cardAccent, var(--accentColor));
+  color: #070b12;
+}
+
+/* ── Card Body & Skills ── */
+.what-card-body {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.what-card-collapsed .what-card-body {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.what-card-active .what-card-body {
+  max-height: 400px;
+  opacity: 1;
+}
+
+.what-card-body p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin: 0 0 16px 0;
+  font-weight: 300;
+}
+
+.what-skillset h5 {
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin: 0 0 10px 0;
+}
+
+.what-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.what-pill {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  transition: all 0.25s ease;
+}
+
+.what-card:hover .what-pill {
+  border-color: rgba(94, 234, 212, 0.3);
+}
+
+.what-pill:hover {
+  background: var(--cardAccent, var(--accentColor));
+  color: #070b12;
+  border-color: var(--cardAccent, var(--accentColor));
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ── */
+@media only screen and (max-width: 1024px) {
+  .whatIDO {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 60px 0;
+    min-height: auto;
+  }
+  .what-box-title {
+    width: 100%;
+    max-width: 600px;
+  }
+  .what-box-cards {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .what-cards-container {
+    max-width: 100%;
+  }
+  .what-card-collapsed .what-card-body {
+    max-height: none;
+    opacity: 1;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .what-expand-indicator {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .what-card {
+    padding: 18px 20px;
+  }
+  .what-card-header {
+    gap: 12px;
+  }
+  .what-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+  .what-number {
+    font-size: 16px;
+  }
+}
+

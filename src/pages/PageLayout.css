@@ -1,0 +1,154 @@
+.page-wrapper {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  width: var(--cWidth);
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.page-header {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #f1f5f9;
+}
+
+.page-header h1 span {
+  color: var(--accentColor);
+}
+
+.page-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #eae5ec;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.page-back-link:hover {
+  background: rgba(94, 234, 212, 0.15);
+  border-color: var(--accentColor);
+  color: var(--accentColor);
+  transform: translateX(-3px);
+}
+
+.page-content-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* For standalone About page */
+.page-view .about-section {
+  min-height: auto;
+  padding: 40px 0;
+}
+
+.page-view .about-me {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* For standalone Career page */
+.page-view .career-section {
+  padding: 20px 0 60px;
+}
+
+.page-view .career-timeline {
+  max-height: 100% !important;
+  opacity: 1 !important;
+}
+
+.page-view .career-info-box {
+  opacity: 1 !important;
+}
+
+/* For standalone What I Do page */
+.page-view .whatIDO {
+  padding: 20px 0;
+  min-height: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.page-view .what-box {
+  width: 100%;
+}
+
+.page-view .what-box-cards {
+  opacity: 1 !important;
+  justify-content: flex-start;
+}
+
+.page-view .what-card-collapsed .what-card-body {
+  max-height: none !important;
+  opacity: 1 !important;
+  margin-top: 18px !important;
+  padding-top: 16px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* For standalone Work page */
+.page-view .work-section {
+  padding: 20px 0 60px;
+}
+
+/* For 404 page */
+.not-found-container {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.not-found-code {
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--accentColor), #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.not-found-title {
+  font-size: 2rem;
+  margin: 20px 0 10px;
+  color: #f1f5f9;
+}
+
+.not-found-desc {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  max-width: 500px;
+  margin-bottom: 30px;
+}

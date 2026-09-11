@@ -1,0 +1,345 @@
+.career-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  opacity: 1;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: auto;
+  padding: 100px 0 80px 0;
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+.career-container {
+  width: var(--cWidth);
+  max-width: 1100px;
+  margin: auto;
+  position: relative;
+}
+
+.career-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.career-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: rgba(94, 234, 212, 0.08);
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  margin-bottom: 16px;
+}
+
+.career-badge span {
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--accentColor);
+  text-transform: uppercase;
+}
+
+.career-header h2 {
+  font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 1.1;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.career-header h2 span {
+  color: var(--accentColor);
+}
+
+.career-subheading {
+  font-size: clamp(14px, 1.2vw, 17px);
+  color: #94a3b8;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Timeline Track & Rail ── */
+.career-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin: 0 auto;
+  padding: 20px 0 20px 64px;
+}
+
+.career-timeline-rail {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 21px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.career-timeline-line {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--accentColor) 0%,
+    #38bdf8 50%,
+    #a855f7 100%
+  );
+  box-shadow: 0 0 10px rgba(94, 234, 212, 0.5);
+  transform-origin: top center;
+  transition: transform 0.5s ease;
+}
+
+/* ── Milestone Row & Node ── */
+.career-item-row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.career-node {
+  position: absolute;
+  left: -64px;
+  top: 24px;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+
+.career-node-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #0a0e17;
+  border: 2px solid var(--timelineAccent, var(--accentColor));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--timelineAccent, var(--accentColor));
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.8), 0 0 12px var(--timelineAccent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.career-item-row:hover .career-node-circle {
+  transform: scale(1.15);
+  box-shadow: 0 0 24px var(--timelineAccent);
+}
+
+.career-connector-line {
+  width: 20px;
+  height: 2px;
+  background: var(--timelineAccent, var(--accentColor));
+  opacity: 0.6;
+}
+
+/* ── Milestone Card Box ── */
+.career-info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 36px;
+  width: 100%;
+  position: relative;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 26px 30px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.career-info-box:hover {
+  transform: translateX(4px);
+  border-color: rgba(94, 234, 212, 0.35);
+  box-shadow: 0 14px 35px -8px rgba(0, 0, 0, 0.7), 0 0 20px -5px var(--timelineAccent);
+}
+
+.career-info-in {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 42%;
+  flex-shrink: 0;
+}
+
+.career-type-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--timelineAccent, var(--accentColor));
+  background: rgba(255, 255, 255, 0.04);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: fit-content;
+}
+
+.career-role h4 {
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.25;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 6px 0 2px 0;
+}
+
+.career-role h5 {
+  font-weight: 500;
+  font-size: 15px;
+  margin: 0;
+  color: #94a3b8;
+}
+
+.career-duration {
+  display: inline-block;
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+.career-period-badge h3 {
+  font-size: clamp(24px, 2.2vw, 34px);
+  margin: 0;
+  font-weight: 700;
+  color: var(--timelineAccent, var(--accentColor));
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
+/* ── Card Body & Tags ── */
+.career-body {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.career-body p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #cbd5e1;
+  font-weight: 300;
+  margin: 0;
+}
+
+.career-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.career-tag {
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+
+.career-info-box:hover .career-tag {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+}
+
+/* ── Responsive ── */
+@media only screen and (max-width: 900px) {
+  .career-info {
+    padding-left: 54px;
+    gap: 28px;
+  }
+
+  .career-timeline-rail {
+    left: 17px;
+  }
+
+  .career-node {
+    left: -54px;
+  }
+
+  .career-node-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+
+  .career-connector-line {
+    width: 18px;
+  }
+
+  .career-info-box {
+    flex-direction: column;
+    gap: 16px;
+    padding: 22px;
+  }
+
+  .career-info-in {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .career-body {
+    width: 100%;
+  }
+
+  .career-header {
+    margin-bottom: 40px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .career-section {
+    padding: 60px 0;
+  }
+
+  .career-info {
+    padding-left: 44px;
+    gap: 24px;
+  }
+
+  .career-timeline-rail {
+    left: 14px;
+  }
+
+  .career-node {
+    left: -44px;
+  }
+
+  .career-node-circle {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .career-connector-line {
+    width: 14px;
+  }
+
+  .career-info-box {
+    padding: 18px;
+  }
+
+  .career-info-in {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .career-period-badge h3 {
+    font-size: 20px;
+  }
+}
