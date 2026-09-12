@@ -20,7 +20,7 @@ const SERVICES = [
     title: "ENGINEERING & WORKFLOWS",
     subtitle: "Modern Git & AI-Powered Acceleration",
     desc: "Building maintainable codebases with structured version control, efficient development workflows, and leveraging state-of-the-art AI developer tools to accelerate quality delivery.",
-    skills: ["Git", "Vite", "AI Tools", "React JS", "JavaScript"],
+    skills: ["Git", "Vite", "AI Tools", "Prompt Engineering", "React JS", "JavaScript"],
     accent: "#38bdf8",
   },
 ];

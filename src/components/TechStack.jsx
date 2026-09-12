@@ -16,6 +16,7 @@ import {
   FaCss3Alt,
   FaGitAlt,
   FaRobot,
+  FaWandMagicSparkles,
 } from "react-icons/fa6";
 import { TbBrandTailwind } from "react-icons/tb";
 import { SiVite } from "react-icons/si";
@@ -29,6 +30,7 @@ const SKILLS_DATA = [
   { name: "Git", color: "#F05032", bg: "#2a1510", icon: FaGitAlt, label: "Version Control" },
   { name: "Vite", color: "#646CFF", bg: "#18142a", icon: SiVite, label: "Next-Gen Frontend Tooling" },
   { name: "AI Tools", color: "#A855F7", bg: "#22102a", icon: FaRobot, label: "LLMs & AI-Powered Dev" },
+  { name: "Prompt Engineering", color: "#10B981", bg: "#0d2621", icon: FaWandMagicSparkles, label: "LLM Guidance & Context Design" },
 ];
 
 function createSkillCanvasTexture(skill) {
@@ -62,13 +64,31 @@ function createSkillCanvasTexture(skill) {
   ctx.fillStyle = "#ffffff";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.font = "bold 58px Geist, sans-serif";
-  ctx.fillText(skill.name, 256, 256);
 
-  // Subtitle / tag
-  ctx.fillStyle = skill.color;
-  ctx.font = "600 24px Geist, sans-serif";
-  ctx.fillText("SKILL", 256, 330);
+  if (skill.name.includes(" ") && skill.name.length > 12) {
+    const parts = skill.name.split(" ");
+    ctx.font = "bold 44px Geist, sans-serif";
+    ctx.fillText(parts[0], 256, 230);
+    ctx.fillText(parts.slice(1).join(" "), 256, 280);
+
+    // Subtitle / tag
+    ctx.fillStyle = skill.color;
+    ctx.font = "600 22px Geist, sans-serif";
+    ctx.fillText("SKILL", 256, 340);
+  } else {
+    let fontSize = 58;
+    ctx.font = `bold ${fontSize}px Geist, sans-serif`;
+    while (ctx.measureText(skill.name).width > 360 && fontSize > 28) {
+      fontSize -= 4;
+      ctx.font = `bold ${fontSize}px Geist, sans-serif`;
+    }
+    ctx.fillText(skill.name, 256, 256);
+
+    // Subtitle / tag
+    ctx.fillStyle = skill.color;
+    ctx.font = "600 24px Geist, sans-serif";
+    ctx.fillText("SKILL", 256, 330);
+  }
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.needsUpdate = true;
@@ -76,7 +96,7 @@ function createSkillCanvasTexture(skill) {
 }
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
-const spheres = [...Array(24)].map(() => ({
+const spheres = [...Array(27)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
 
