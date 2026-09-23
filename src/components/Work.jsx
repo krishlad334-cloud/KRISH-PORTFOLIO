@@ -5,6 +5,14 @@ import { MdArrowBack, MdArrowForward, MdArrowOutward, MdLaunch } from "react-ico
 
 const projects = [
   {
+    title: "TrustKYC",
+    category: "Enterprise B2B KYC & Identity Verification",
+    tools: "React.js, Vite, Tailwind CSS, OCR Document Extraction, Compliance Scoring, Security Architecture",
+    image: "/images/trustkyc.png",
+    liveDemo: "https://trustkyc-roan.vercel.app/",
+    desc: "Bank-grade B2B KYC verification, automated document extraction, compliance scoring, and secure identity infrastructure engineered for modern enterprises and audit-ready compliance.",
+  },
+  {
     title: "HomeNeeds",
     category: "E-Commerce & Modern Marketplace",
     tools: "React.js, Vite, Tailwind CSS, Responsive UI, Component Architecture",
